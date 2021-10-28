@@ -21,7 +21,7 @@ export const CDN_ALIAS = [
     'js0_cdn_a',
     'js0_cdn_m',
     //'js1_cdn_a',
-    'js1_cdn_m',
+    //'js1_cdn_m',
     'js2_cdn_a',
     'js2_cdn_m'
 ]
@@ -34,7 +34,7 @@ export const CDN_PROVIDER = {
     js0_cdn_a: "js0.cdn.applicationinsights.io",
     js0_cdn_m: "js0.cdn.monitor.azure.com",
     //js1_cdn_a: "js1.cdn.applicationinsights.io",
-    js1_cdn_m: "js1.cdn.monitor.azure.com",
+    //js1_cdn_m: "js1.cdn.monitor.azure.com",
     js2_cdn_a: "js2.cdn.applicationinsights.io",
     js2_cdn_m: "js2.cdn.monitor.azure.com"
 }
@@ -47,7 +47,7 @@ export const ENDPOINTS = {
     js0_cdn_a: 'https://js0.cdn.applicationinsights.io/scripts/b/ai.2.min.js',
     js0_cdn_m: 'https://js0.cdn.monitor.azure.com/scripts/b/ai.2.min.js',
     //js1_cdn_a: 'https://js1.cdn.applicationinsights.io/scripts/b/ai.2.min.js',
-    js1_cdn_m: 'https://js1.cdn.monitor.azure.com/scripts/b/ai.2.min.js',
+    //js1_cdn_m: 'https://js1.cdn.monitor.azure.com/scripts/b/ai.2.min.js',
     js2_cdn_a: 'https://js2.cdn.applicationinsights.io/scripts/b/ai.2.min.js',
     js2_cdn_m: 'https://js2.cdn.monitor.azure.com/scripts/b/ai.2.min.js'  
 }
