@@ -15,6 +15,7 @@ export const validteCdnRlt = (rlt) => {
 
 export const CDN_ALIAS = [
     'js_m',
+    //'js_m_3',
     'az', 
     'js_cdn_a', 
     'js_cdn_m',
@@ -28,6 +29,7 @@ export const CDN_ALIAS = [
 
 export const CDN_PROVIDER = {
     js_m: "js.monitor.azure.com",
+    //js_m_3: "js.monitor.azure.com_3",
     az: "az416426.vo.msecnd",
     js_cdn_a: "js.cdn.applicationinsights.io",
     js_cdn_m: "js.cdn.monitor.azure.com",
@@ -41,6 +43,7 @@ export const CDN_PROVIDER = {
 
 export const ENDPOINTS = {
     js_m: 'https://js.monitor.azure.com/scripts/b/ai.2.min.js',
+    //js_m_3: 'https://js.monitor.azure.com/scripts/c/ai.3.min.js',
     az: 'https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js',
     js_cdn_a: 'https://js.cdn.applicationinsights.io/scripts/b/ai.2.min.js',
     js_cdn_m: 'https://js.cdn.monitor.azure.com/scripts/b/ai.2.min.js',
