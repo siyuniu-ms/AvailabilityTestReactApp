@@ -4,6 +4,7 @@ import testTelemetry from "./functions/telemetryFunc";
 import TelemetryList from "./component/TelemetryList";
 import Loading from "./component/Loading";
 import CheckCDN from "./component/CheckCDN";
+import IntergrityCheck from "./component/IntegrityCheck";
 
 function App() {
   const [appInsights,setappInsights] = useState()
@@ -63,6 +64,10 @@ function App() {
         <div className="cdn-status">
           {!isloading? <div className="cdn-title">CDN Status</div>:""}
           {!isloading? <CheckCDN />:""}
+        </div>
+        <div>
+          {!isloading? <div className="cdn-title">IntergrityCheck</div>:""}
+          {!isloading? <IntergrityCheck />:""}
         </div>
        </div>
       </div>
