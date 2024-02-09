@@ -5,6 +5,7 @@ import TelemetryList from "./component/TelemetryList";
 import Loading from "./component/Loading";
 import CheckCDN from "./component/CheckCDN";
 import IntergrityCheck from "./component/IntegrityCheck";
+import IframeComponent from './functions/iframe';
 
 function App() {
   const [appInsights,setappInsights] = useState()
@@ -16,7 +17,7 @@ function App() {
   const [sentTime, setsentTime] = useState()
   const [sentBuffer,setsentBuffer] = useState("")
   const [istrigger,setistrigger] = useState(false)
-
+  const [response, setResponse] = useState([]);
   useEffect(() => {
     const timer = setTimeout(() => {
       let insightOject =  window.appInsights;
@@ -48,8 +49,37 @@ function App() {
     setsentTime(Date().toLocaleString());
   },[isloading,appInsights]);
 
+  const runDemo = () => {
+    if (window.sharedStorage) {
+      window.sharedStorage.set('third-party-write-demo', "written into third-party storage by third-party code")
+      console.log("runDemo written into third-party storage by third-party code")
+      const iframe = document.querySelector('iframe');
+      iframe.contentWindow.postMessage('run-third-party-write-demo', '*');
+    }
+  };
+
+  // Function to reset the demo
+  const resetDemo = () => {
+    if (window.sharedStorage) {
+      window.sharedStorage.delete('third-party-write-demo')
+      window.parent.postMessage('clear-publisher-data', '*')
+      const iframe = document.querySelector('iframe');
+
+      iframe.contentWindow.postMessage('clear-publisher-data', '*');
+    }
+  };
   return (
+ 
     <div className="App">
+  <div className="demo__buttons-container">
+        <button className="mdl-button mdl-js-button mdl-button--raised demo__button" onClick={runDemo}>
+          Write to both publisher's and third-party's shared storage
+        </button>
+        <button className="mdl-button mdl-js-button mdl-button--raised demo__button" onClick={resetDemo}>
+          Delete publisher and third-party demo data
+        </button>
+      </div>
+   
       <div className="App-wrapper">
         <p className="testing-title">Application Insights Snippet Testing 1</p>
         <div className="App-body">
@@ -67,8 +97,27 @@ function App() {
         </div>
         <div>
           {!isloading? <div className="cdn-title">IntergrityCheck</div>:""}
-          {!isloading? <IntergrityCheck />:""}
+          {/* {!isloading? <IntergrityCheck />:""} */}
         </div>
+        <div>
+      <h1>Package Versions</h1>
+      <iframe src="http://www.test1.com:9001/AISKU/Tests/Manual/cookie.html" ></iframe>
+      <script src="http://www.test1.com:9001/AISKU/Tests/Manual/cookie.js">what</script>
+      <iframe srcdoc="
+    <html>
+    <head>
+        <script>
+            console.log('IFrame opened');
+        </script>
+    </head>
+    <body>
+        <!-- IFrame content goes here -->
+    </body>
+    </html>
+"></iframe>
+
+      {/* <IframeComponent src='http://www.test2.com:9001/AISKU/Tests/Manual/cookie.js' style={{ display: 'none' }}></IframeComponent> */}
+    </div>
        </div>
       </div>
    </div>);
